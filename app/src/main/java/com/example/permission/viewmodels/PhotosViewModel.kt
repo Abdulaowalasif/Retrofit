@@ -22,8 +22,8 @@ class PhotosViewModel @Inject constructor(private val repository: PhotosReposito
     private fun getPhotos() {
         viewModelScope.launch {
             try {
-                val getPhotos = repository.fetchPhotos()
-                _photos.value = getPhotos.body()!!
+                repository.fetchPhotos()
+                _photos.value = repository.photos.value
             } catch (_: Exception) {
             }
         }
